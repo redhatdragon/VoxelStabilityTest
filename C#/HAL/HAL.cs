@@ -27,8 +27,9 @@ unsafe static class HAL {
 		    if (font != IntPtr.Zero) SDL_ttf.TTF_CloseFont(font);
             string fontPath = getDirData(); fontPath += "Fonts/consola.ttf";
 		    font = SDL_ttf.TTF_OpenFont(fontPath, (int)fontWidth);
-		    if (font == IntPtr.Zero) {
-                Console.WriteLine("Error: Can't load font consola.ttf.");
+            if (font == IntPtr.Zero) {
+                string errStr = "Error: Can't load font: " + fontPath;
+                Console.WriteLine(errStr);
                 return;
             }
 		    lastFontWidth = fontWidth;
